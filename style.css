@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: aliceblue;
+}
+
+.container {
+  height: 60px;
+  background: white;
+  border-bottom: 1px solid aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.container h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(244, 133, 5);
+}
+
+.buttons button {
+  margin-left: 10px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.buttons .savebtn {
+  background-color: black;
+  color: white;
+}
+
+.buttons button:hover {
+  opacity: 0.8;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 260px 1fr 280px;
+  height: 100vh;
+}
+
+.leftbar {
+  background: white;
+  padding: 16px;
+}
+
+
+
+.leftbar .compo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  color: rgb(244, 133, 5);
+}
+
+.leftbar .compo:hover {
+  background: #f1f5ff;
+}
+
+.leftbar .compo {
+  text-decoration: none;
+  color: black;
+}
+.leftbar h2 {
+  color: black;
+}
+.box {
+  padding: 30px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: rgb(244, 133, 5);
+}
+
+.form-box {
+  border-radius: 10px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  color: grey;
+  font-size: 14px;
+}
+
+.rightbar {
+  background: #ffffff;
+  border-left: 1px solid #e5e7eb;
+  padding: 16px;
+}
+
+.rightbar p {
+  font-size: 14px;
+  color: #9ca3af;
+}
