@@ -1,80 +1,81 @@
-let ul = document.querySelectorAll(".ul li");
 let box = document.querySelector(".form-box");
 let leftbar = document.querySelector(".leftbar");
 let rightbar = document.querySelector(".rightbar");
 
-let comp = [
+let components = [
   {
-    input: "Name",
-  },
-  {
-    input: "email",
-  },
-  {
-    dob: "DOB",
-  },
-  {
-    gender: "gender",
-  },
-  {
-    Number: "Age",
-  },
-  {
-    number: "Phone no",
-  },
-  {
-    button: "Submit",
-  },
-];
-comp.forEach((components) => {
-  for (let x in components) {
-    let div = document.createElement("div");
-    div.classList.add("compo");
-    div.innerText = components[x];
-    leftbar.append(div);
-  }
-});
-
-
-let li = [
-  {
+    label: "Name",
     type: "text",
-    placeholder: "name",
   },
+
   {
+    label: "Email",
     type: "email",
-    placeholder: "Enter your email",
   },
   {
+    label: "DOB",
     type: "date",
-    placeholder: "Enter your DOB",
   },
+
   {
-    //   option :[male,female,others],
+    label: "Gender",
     type: "radio",
   },
   {
+    label: "Age",
     type: "number",
-    placeholder: "Enter your Phone",
   },
   {
-    type: "number",
-    placeholder: "Enter your Age",
+    label: "Phone",
+    type: "tel",
   },
   {
+    label: "Submit",
     type: "button",
-    text: "Submit",
   },
 ];
-li.forEach((item) => {
+components.forEach((item) => {
+  let div = document.createElement("div");
+  div.classList.add("compo");
+  div.innerText = item.label;
+  leftbar.append(div);
+  div.addEventListener("click", () => showinput(item));
+});
+
+function showinput(item) {
+  let data = document.createElement("div");
+  data.classList.add("field");
+
+  if (item.type !== "button") {
+    let label = document.createElement("label");
+    label.innerText = item.label;
+    data.append(label);
+  }
+  if (item.type === "radio") {
+    let gender = document.createElement("div");
+    gender.classList.add("gender");
+    gender.innerHTML = `<label><input type="radio" name="Gender"> Male</label>
+            <label> <input type="radio" name="Gender"> Female</label>
+            <label> <input type="radio" name="Gender"> Others</label>`;
+            data.append(gender);
+            box.append(data)
+            return;
+  }
   let input = document.createElement("input");
   input.type = item.type;
-  if (item.placeholder) {
-    input.placeholder = item.placeholder;
-  }
 
   if (item.type === "button") {
-    input.value = item.text;
+    input.value = "Submit";
+  } else {
+    input.placeholder = "Enter " + item.label;
   }
-  rightbar.append(input);
-});
+
+  console.log(item);
+
+  rightbar.innerHTML = `<h2>PROPERTIES</h2>
+        <p>Select an element to edit its properties</p>
+    <label class= "label">Label:<input placeholder = "Enter Label"></label>
+    <label class= "placeholder" >Placeholder:<input placeholder = "Enter placeholder"></label>`;
+  data.append(input);
+  box.append(data);
+}
