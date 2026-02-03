@@ -6,110 +6,177 @@
 }
 
 body {
-  background: aliceblue;
+  background: #f3f6fb;
 }
 
 .container {
   height: 60px;
   background: white;
-  border-bottom: 1px solid aliceblue;
+  border-bottom: 1px solid #e5e7eb;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
 }
 
 .container h1 {
-  font-size: 20px;
+  font-size: 23px;
   font-weight: bold;
-  color: rgb(244, 133, 5);
+  color: #f48505;
 }
 
 .buttons button {
   margin-left: 10px;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 6px;
-  border: none;
+  border: 1px solid #e5e7eb;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 14px;
+  background: white;
 }
 
-.buttons .savebtn {
-  background-color: black;
+.savebtn {
+  background: black !important;
   color: white;
 }
 
 .buttons button:hover {
-  opacity: 0.8;
+  opacity: 0.85;
 }
-
 .wrapper {
   display: grid;
   grid-template-columns: 260px 1fr 280px;
-  height: 100vh;
+  height: calc(100vh - 60px);
+  margin-top: 60px;
 }
 
 .leftbar {
   background: white;
-  padding: 16px;
+  padding: 20px;
+  border-right: 1px solid #e5e7eb;
 }
 
+.leftbar h2 {
+  font-size: 15px;
+  margin-bottom: 15px;
+  color: #111827;
+}
 
-
-.leftbar .compo{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.leftbar .compo {
   padding: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
   font-size: 13px;
   cursor: pointer;
-  color: rgb(244, 133, 5);
+  transition: 0.2s;
 }
 
 .leftbar .compo:hover {
   background: #f1f5ff;
 }
-
-.leftbar .compo {
-  text-decoration: none;
-  color: black;
-}
-.leftbar h2 {
-  color: black;
-}
 .box {
   padding: 30px;
 }
 
-h2 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  color: rgb(244, 133, 5);
+.box h2 {
+  margin-bottom: 15px;
+  color: #f48505;
 }
 
 .form-box {
+  background: white;
   border-radius: 10px;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid black;
-  color: grey;
-  font-size: 14px;
+  min-height: 450px;
+  padding: 25px;
+  border: 1px solid #e5e7eb;
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.field {
+  width: 80%;
+  border: 1px solid #e5e7eb;
+  padding: 15px;
+  border-radius: 6px;
+  position: relative;
+  background: #fafafa;
+}
+
+.field label {
+  font-size: 13px;
+  color: #374151;
+  font-weight: bold;
+}
+
+.form-box input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 9px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  outline: none;
+}
+
+.form-box input:focus {
+  border-color: #f48505;
+}
+
+.delbtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+
+  background-color: #f48505;
+  color: white;
+  cursor: pointer;
+}
+
+.delbtn:hover {
+  background: orangered;
+}
+
+.gender label {
+  margin-right: 10px;
+  font-size: 13px;
 }
 
 .rightbar {
-  background: #ffffff;
+  background: white;
   border-left: 1px solid #e5e7eb;
-  padding: 16px;
+  padding: 20px;
+}
+
+.rightbar h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .rightbar p {
-  font-size: 14px;
-  color: #9ca3af;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 15px;
+}
+
+.rightbar label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.rightbar input {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
 }
