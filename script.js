@@ -2,33 +2,27 @@ let box = document.querySelector(".form-box");
 let leftbar = document.querySelector(".leftbar");
 let rightbar = document.querySelector(".rightbar");
 let newbtn = document.querySelector(".newbtn");
+let save = document.querySelector(".savebtn");
+
 let components = [
   {
-    label: "Name",
+    label: "Inputs",
     type: "text",
   },
 
+  {
+    label: "DOB",
+    type: "date",
+  },
   {
     label: "Email",
     type: "email",
   },
   {
-    label: "DOB",
-    type: "date",
-  },
-
-  {
     label: "Gender",
     type: "radio",
   },
-  {
-    label: "Age",
-    type: "number",
-  },
-  {
-    label: "Phone",
-    type: "tel",
-  },
+
   {
     label: "Submit",
     type: "button",
@@ -50,17 +44,20 @@ function showinput(item) {
   delbtn.innerHTML = "Delete";
 
   data.append(delbtn);
+  let label = document.createElement("label");
   if (item.type !== "button") {
-    let label = document.createElement("label");
     label.innerText = item.label;
     data.append(label);
   }
   if (item.type === "radio") {
     let gender = document.createElement("div");
     gender.classList.add("gender");
-    gender.innerHTML = `<label> <input type="radio" name="Gender" > Male</label>
-            <label> <input type="radio" name="Gender"> Female</label>
-            <label> <input type="radio" name="Gender"> Others</label>`;
+    gender.innerHTML = `
+<label><input type="radio" name="Gender" value="Male"> Male</label>
+<label><input type="radio" name="Gender" value="Female"> Female</label>
+<label><input type="radio" name="Gender" value="Others"> Others</label>
+`;
+
     data.append(gender);
     box.append(data);
     return;
@@ -80,11 +77,14 @@ function showinput(item) {
     input.placeholder = "Enter placeholder's text...";
   }
 
-  console.log(item);
+  //   console.log(item);
 
   data.append(input);
   box.append(data);
   data.addEventListener("click", () => editData(data));
+  save.addEventListener("click", () =>
+    saveform(label.innerText, input.placeholder),
+  );
 }
 
 function editData(data) {
@@ -99,19 +99,32 @@ function editData(data) {
   let fieldInput = data.querySelector("input");
 
   rightlabel.oninput = () => {
-    if (fieldLabel) {
-      fieldLabel.innerText = rightlabel.value;
-    }
+    fieldLabel.innerText = rightlabel.value;
   };
 
   placeholder.oninput = () => {
-    if (fieldInput) {
-      fieldInput.placeholder = placeholder.value;
-    } else {
-    }
+    fieldInput.placeholder = placeholder.value;
   };
 }
 newbtn.addEventListener("click", () => {
   box.innerHTML = "";
   rightbar.innerHTML = "";
 });
+
+function saveform(data, item) {
+  let storage = JSON.parse(localStorage.getItem("form")) || [];
+
+  let obj = {
+    id: Date.now(),
+    label: data,
+    placeholder: item,
+  };
+
+  storage.push(obj);
+
+  localStorage.setItem("form", JSON.stringify(storage));
+  alert("Form saved successfully");
+  box.innerHTML = ""
+  rightbar.innerHTML = ""
+  console.log("Saved forms:", storage);
+}
